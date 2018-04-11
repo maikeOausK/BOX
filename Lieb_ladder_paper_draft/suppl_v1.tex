@@ -1,0 +1,1010 @@
+\documentclass[prl,aps,twocolumn,showpacs,superscriptaddress,longbibliography]{revtex4-1}
+
+%altaffillsymbol
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+%\usepackage{dsfont}
+\usepackage{amssymb,amsmath}
+\usepackage{sidecap}
+\usepackage{wrapfig}
+%\usepackage[bookmarks]{hyperref}
+\usepackage{natbib}
+%\usepackage{braket}
+\usepackage{dsfont}
+
+
+%\bibliographystyle{apsrev}
+%\nofiles
+\usepackage{graphicx}
+\usepackage{leftidx}
+\usepackage[caption=false]{subfig}
+%\usepackage{caption}
+%\usepackage{subcaption}
+\usepackage{color}
+
+\usepackage{bbold} %This package allows to write the identity symbol
+
+\usepackage{wasysym} % In order to introduce polygon symbols in the text
+%aus
+%\usepackage[geometry]{ifsym}
+%\usepackage{amsbsy}
+%\usepackage{bbding}
+%\usepackage{universal}
+%\usepackage{showkeys}
+
+
+\usepackage{stackrel}
+
+% color for commenting
+\newcommand{\col}[1]{\color{red} #1}
+% package for strikethrough
+\usepackage{soul,xcolor}
+\setstcolor{red}
+
+
+
+% ENVIRONMENTS
+
+\newcommand{\be}{\begin{equation}}
+\newcommand{\ee}{\end{equation}}
+\newcommand{\ba}{\begin{align}}
+\newcommand{\ea}{\end{align}}
+\newcommand{\sysb}{\left\{\begin{array}}
+\newcommand{\syse}{\end{array}\right.}
+\newcommand{\baa}{\begin{array}}
+\newcommand{\eaa}{\end{array}}
+\newcommand{\bs}{\begin{split}}
+\newcommand{\es}{\end{split}}
+
+\newcommand{\matb}{\left(\begin{array}}
+\newcommand{\mate}{\end{array}\right)}
+
+
+%VERTICAL SPACES
+\newcommand{\vsii}{\vspace{2 mm}}
+\newcommand{\vsiii}{\vspace{3 mm}}
+\newcommand{\vsiv}{\vspace{4 mm}}
+
+% MEASURES
+\newcommand{\ddk}{\int \frac{\rmd^{\left( d-1 \right)}k}{\left( 2\pi \right)^{\left( d-1 \right)}}}
+\newcommand{\ddq}{\int \frac{d^{ d-1}q}{\left( 2\pi \right)^{\left( d-1 \right)}}}
+\newcommand{\Dq}{\int \mathcal{D}q}
+%\newcommand{\dd}[2]{\frac{\rmd^{#1}#2}{\left( 2\pi \right)^{#1 }}}
+%\newcommand{\ddr}[2]{\frac{\rm{d}^{#1}#2}{\left( 2\pi \right)^{#1 }}}
+
+% GENERIC SHORTHAND
+\newcommand{\mal}{\mathcal}
+\newcommand{\rmd}{{\rm{d}}}
+\newcommand{\rmD}{{\rm{D}}}
+\newcommand{\rmi}{{\rm{i}}}
+\newcommand{\rme}[1]{{\rm{e}}^{#1}}
+\newcommand{\mand}{\quad\text{ and }\quad}
+\newcommand{\Dim}[1]{\left[ #1 \right]}
+\newcommand{\vphi}{\varphi}
+\newcommand{\wh}{\widehat}
+\newcommand{\wt}{\widetilde}
+\newcommand{\ob}{\mal{O}}
+\newcommand{\id}{\mathbb{1}}
+\newcommand{\trace}[1]{{\rm tr}\left\{ #1 \right\}}
+\newcommand{\order}[1]{O\left( #1 \right)}
+\newcommand{\ve}{\varepsilon}
+\newcommand{\gh}{\phantom}
+\newcommand{\EGamma}[1]{\Gamma \lt #1 \rt}
+\newcommand{\ha}{\frac{1}{2}}
+\newcommand{\eq}{\, = \,}
+
+
+
+% SHORTHANDS SPECIFIC TO THE PRESENT TEXT
+\newcommand{\pop}[1]{\hat{n}_{#1}}
+\newcommand{\bp}{\mathbf{p}}
+\newcommand{\bx}{\mathbf{x}}
+\newcommand{\brho}{\bm{\rho}}
+\newcommand{\brhoo}{\bm{\rho_0}}
+\newcommand{\hsi}{\wh{\sigma}}
+\newcommand{\whN}{\wh{N}}
+\newcommand{\quadblock}[4]{\matb{c|c} #1 & #2 \\ \hline #3 & #4 \mate}
+\newcommand{\bE}{{\bf E}}
+\newcommand{\bD}{{\bf D}}
+% \newcommand{\ce}{\rho}
+\newcommand{\sdim}[1]{\lqq #1 \rqq}
+\newcommand{\tphi}{\widetilde{\vphi}}
+\newcommand{\xp}{x_\perp}
+\newcommand{\vth}{\vartheta}
+\newcommand{\rmn}{{\rm n}}
+\newcommand{\rmr}{{\rm r}}
+\newcommand{\hatt}{\hat{t}}
+\newcommand{\pp}{{\mathbf{P}}}
+\newcommand{\tx}{\tilde{x}}
+\newcommand{\ty}{\tilde{y}}
+
+
+
+% BRACKETS
+\newcommand{\lt}{\left(}
+\newcommand{\rt}{\right)}
+\newcommand{\lqq}{\left[}
+\newcommand{\rqq}{\right]}
+\newcommand{\lan}{\left\langle}
+\newcommand{\ran}{\right\rangle}
+\newcommand{\abs}[1]{\left| #1 \right|}
+\newcommand{\eval}[1]{\left.\right|_{ #1 }}
+\newcommand{\av}[1]{\lan #1 \ran}
+\newcommand{\norm}[1]{\left\| #1 \right\|}
+\newcommand{\set}[1]{\left\{  #1  \right\}}
+
+
+
+% PAULI MATRICES (SIMBOLS AND MATRIX FORMS)
+\newcommand{\sx}{{\sigma^x}}
+\newcommand{\sy}{{\sigma^y}}
+\newcommand{\sz}{{\sigma^z}}
+\newcommand{\sxM}{\matb{cc} 0 & 1 \\ 1 & 0   \mate}
+\newcommand{\syM}{\matb{cc} 0 & -i \\ i & 0   \mate}
+\newcommand{\szM}{\matb{cc} 1 & 0 \\ 0 & -1   \mate}	
+\newcommand{\stx}[1]{\widetilde{\sigma}_{#1}^x}
+\newcommand{\sty}[1]{\widetilde{\sigma}_{#1}^y}
+\newcommand{\stz}[1]{{\widetilde{\sigma}_{#1}^z}}
+
+% NUMBER SETS
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
+
+% QUANTUM MECHANICS
+\newcommand{\ket}[1]{\left| #1 \ran}
+\newcommand{\bra}[1]{\lan #1 \right|}
+\newcommand{\bracket}[2]{\lan #1 \right| \!\left. #2 \ran}
+\newcommand{\proj}[1]{\ket{#1} \bra{#1}}
+\newcommand{\comm}[2]{\left[ #1, #2 \right]}
+\newcommand{\acomm}[2]{\left\{ #1, #2 \right\}}
+
+
+
+
+% TRIGONOMETRIC AND HYPERBOLIC FUNCTIONS
+\newcommand{\cosa}[1]{\cos \left(  #1 \right)}
+\newcommand{\sina}[1]{\sin \left(  #1 \right)}
+\newcommand{\tana}[1]{\tan \left(  #1 \right)}
+\newcommand{\cossa}[2]{\cos^{#1} \left(  #2 \right)}
+\newcommand{\sinna}[2]{\sin^{#1} \left(  #2 \right)}
+\newcommand{\tanna}[2]{\tan^{#1} \left(  #2 \right)}
+\newcommand{\tann}[1]{\tan^{#1}}
+\newcommand{\cosha}[1]{\cosh \left(  #1 \right)}
+\newcommand{\sinha}[1]{\sinh \left(  #1 \right)}
+\newcommand{\tanha}[1]{\tanh \left(  #1 \right)}
+\newcommand{\cossha}[2]{\cosh^{#1} \left(  #2 \right)}
+\newcommand{\sinnha}[2]{\sinh^{#1} \left(  #2 \right)}
+
+% OTHER FUNCTIONS
+\newcommand{\loga}[1]{\log \lt #1 \rt}
+\newcommand{\lna}[1]{\ln \lt #1 \rt}
+\newcommand{\BK}[2]{K_{#1} \lt #2 \rt}
+\newcommand{\Prob}{\mathbb{P}}
+
+
+\newcommand{\nol}{\nonumber \\}
+
+
+\newcommand{\reff}[1]{(\ref{#1})}
+\newcommand{\note}[1]{{\bf \small #1}}
+
+% BOUNDS
+\newcommand{\maxx}[2]{\max\limits_{#1}^{} \left\{ #2 \right\}}
+\newcommand{\minn}[2]{\min\limits_{#1}^{} \left\{ #2 \right\}}
+
+% LIMITS IN SUMS, INTEGRALS, AND THE LIKE
+\newcommand{\prodl}[2]{\prod\limits_{#1}^{#2}}
+\newcommand{\suml}[2]{\sum\limits_{#1}^{#2}}
+\newcommand{\intl}[2]{\int_{#1}^{#2}}
+\newcommand{\bol}[2]{\bigotimes\limits_{#1}^{#2}}
+\newcommand{\liml}[1]{\lim\limits_{#1}}
+
+
+
+% CORRECTIONS
+\newcommand{\change}[1]{\textcolor{blue}{#1}}
+\newcommand{\changer}[1]{\textcolor{red}{#1}}
+\newcommand{\changeg}[1]{\textcolor{green}{#1}}
+\newcommand{\changeb}[1]{\textcolor{blue}{#1}}
+\newcommand{\tochange}[1]{\textcolor{magenta}{#1}}
+\newcommand{\nochange}[1]{\textcolor{black}{#1}}
+\newcommand{\mm}[1]{{\tochange{\footnotesize{\bf (#1)}}}}
+\newcommand{\ag}[1]{{\footnotesize \changer{#1}}}
+\newcommand{\jm}[1]{{\footnotesize \changeg{#1}}}
+\newcommand{\comma}{\quad , \quad}
+
+\newcommand{\dar}{\downarrow}
+\newcommand{\uar}{\uparrow}
+
+
+\newcommand{\transp}{\mathtt{T}}
+
+
+\newcommand{\ind}{b}
+\newcommand{\indd}{c}
+
+
+\usepackage{amsthm}
+\newtheorem{mydef}{Definition}
+\newtheorem{prop}{Proposition}
+\newtheorem{theorem}{Theorem}
+
+
+ \newcommand{\up}{\uparrow}
+ \newcommand{\uu}{\up\, \up}
+ \newcommand{\down}{\downarrow}
+ \newcommand{\dd}{\downarrow\, \downarrow}
+
+  \newcommand{\tspace}{\rule{0pt}{2.6ex}}
+  \newcommand{\norml}{\textnormal}
+  \newcommand{\op}[1]{\mathrm{\hat{#1}}}
+
+
+
+\begin{document}
+
+\section{Approximate Gaussian distribution of the atoms} 
+In order to show how the Gaussian distribution of the atomic positions arises, we consider here an atom of mass $m$ sitting in a one-dimensional optical trap of frequency $\omega$. The results will be straightforwardly generalizable to the three-dimensional case as the three Cartesian coordinates decouple and can be treated independently.
+We work in a regime of temperatures $T$ much lower compared to the trap depth, but larger than the trap frequency, i.e., $k_B T \gg \hbar \omega$. The first assumption allows us to treat the trap as an harmonic potential, yielding a Hamiltonian
+\be
+	\op H_{\rm trap} \approx \frac{\hat{p}^2}{2m} + \frac{m}{2} \omega^2 \hat{x}^2,
+\ee
+where $\hat{x}$ and $\hat{p}$ are the quantum position and momentum, respectively. The thermal state of the system is described by the Gibbs form
+\be
+	\rho_{\rm th} = \frac{1}{Z} \rme{-\beta \op H_{\rm trap}},
+\ee
+where $\beta = 1/ (k_B T)$ and $Z$ is the partition function
+\be
+	Z = \trace{ \rme{-\beta \op H_{\rm trap}}}.
+	\label{eq:part}
+\ee
+Employing the standard mapping
+\be
+	\hat{p} = \rmi \sqrt{\frac{\hbar m \omega}{2}} (\hat{b}^\dag - \hat{b}), \quad \hat{x} = \sqrt{\frac{\hbar }{2m \omega}} (\hat{b}^\dag + \hat{b})
+\ee
+in terms of bosonic creation ($\hat{b}^\dag $) and annihilation ($\hat{b} $) operators $\left(\comm{\hat{b}}{\hat{b}^\dag} = 1\right)$, one readily obtains
+\begin{subequations}
+\begin{align}
+	H = \hbar \omega \lt \hat{b}^\dag \hat{b} + \ha \rt \mand \\
+	Z = \sum_n \rme{-\beta \hbar \omega (n + 1/2)} = \frac{1}{2 \sinha{\frac{\beta \hbar \omega}{2}}}\, .
+\end{align}
+\end{subequations}
+
+
+
+Calling $\ket{x}$ the position eigenvector $\hat{x} \ket{x} = x \ket{x}$, the probability density functions of the atomic position is defined as
+\be
+	p_{\rm pos}(x) = \bra{x} \op \rho_{\rm th} \ket{x}.
+\ee
+Its analytical form can be extracted from the Feynman propagator for the harmonic oscillator $K(x,y,t) = \bra{x}  \rme{-\rmi t \op H / \hbar}   \ket{y}$, which, in the time interval $t \in (0, \pi/\omega)$, reads (see, e.g., \cite{kernel1, kernel2} for detailed derivations)
+\be
+\begin{split}
+	K(x,y,t) = &\sqrt{\frac{m\omega}{2\pi \hbar \rmi \sina{\omega t}}}  \times \\
+	\times & \exp \left\{  \rmi\frac{ m \omega}{2\hbar \sina{\omega t}} \lqq  (x^2 + y^2) \cosa{\omega t} - 2xy  \rqq  \right\}.
+\end{split}
+\ee 
+Substituting $t \to -\rmi\beta \hbar$ and $y \to x$ one finds
+\be
+\begin{split}
+	K(x,x,-\rmi\beta) & = \bra{x}  \rme{ - \beta H}   \ket{x} = \sqrt{\frac{m\omega}{2\pi \hbar \sinha{\omega \beta \hbar}}} \times \\
+	\times & \exp \left\{  - \frac{ m \omega}{\hbar \sinha{\omega \beta \hbar}} \lt \cosha{\omega \beta \hbar} - 1  \rt x^2  \right\}.
+\end{split}
+\ee
+Dividing by the partition function \eqref{eq:part} one finally finds the Gaussian
+\be
+\begin{split}
+	p_{\rm pos}(x) & = \sqrt{\frac{m\omega ( \cosha{\omega \beta \hbar}-1) }{\pi \hbar \sinha{\omega \beta \hbar}}} \times \\
+	\times & \exp \left\{  - \frac{ m \omega}{\hbar \sinha{\omega \beta \hbar}} \lt \cosha{\omega \beta \hbar} - 1  \rt x^2  \right\}.
+	\label{eq:distr1d}
+\end{split}
+\ee
+The variance $\sigma$ can be read off directly and amounts to
+\be
+	\sigma^2  = \frac{\hbar  \sinha{\omega \beta \hbar}}{ 2 m \omega (\cosha{\omega \beta \hbar}-1) }\,.
+\ee
+Since we assumed $\beta \ll \hbar \omega$, i.e., $\omega \beta \hbar \ll 1$, we can expand this expression to lowest order, which yields
+\be
+	\sigma^2 = \frac{1}{m \omega^2 \beta} = \frac{k_B T}{m \omega^2},
+\ee
+as reported in the main text. 
+
+The distribution \eqref{eq:distr1d} is straightforwardly generalized to three-dimensions and traps centered along a chain at positions $k\mathbf{R}_0 = (0,0,kR_0)$ with $k$ an integer:
+\be
+	p^{(k)}_{\rm pos}(\mathbf{r}) = \frac{1}{\lt 2\pi \rt^{3/2} \sigma_1 \sigma_2 \sigma_3} %\exp\left[-\sum_{i=1}^3\frac{(x_i - j r_i)^2}{2\sigma_i^2}. \right]
+	\rme{-  \frac{r_1^2}{2\sigma_1^2} -\frac{r_2^2}{2\sigma_2^2} -\frac{(r_3 - (k-1) \cdot R_0)^2}{2\sigma_3^2} } .
+	\label{eq:distr0}
+\ee
+For clarity, we remark here that the indices in the expression above distinguish between Cartesian components only, e.g, $r_1$ and $r_2$ are the components of the same atom along the $x$ and $y$ directions. In the following, when necessary the trap index will always appear before the component one, e.g., $r_{k,i}$ is the $i$-th component of the $k-th$ atom's position.
+For a ladder, a second set of position distributions $p^{(k),2}_{\rm pos}(\mathbf{r})$ would be added with the same Gaussian form up to $r_2 \to r_2 - R_0$.
+
+
+\section{Distribution of the distances and interactions for a single chain.} 
+Here we focus on a single one-dimensional chain as most of the properties which affect the results in the main text are due to the presence of an extended longitudinal direction. Still, the considerations made for the marginal distributions for pairs of atoms directly apply to any regular lattice configuration as well.
+The distribution of differences $\mathbf{d}_k = \mathbf{r}_{k+1} - \mathbf{r}_k = (d_{k,1}, d_{k,2}, d_{k,3})$ can be found in the Supplemental Material of Ref.~\cite{a_Marcuzzi_PRL_17} and, for isotropic traps, reads
+\begin{widetext}
+\be
+\begin{split}
+	p_{\rm diff}(\mathbf{d}_1 , \ldots , \mathbf{d}_{L-1}) = \int \lqq \prodl{k=1}{L} \rmd^3 r_k \, p^{(k)}_{\rm pos}(\mathbf{r}_k) \rqq  
+	%\times \\ \times 
+	\lqq  \prodl{k'=1}{L-1} \delta^{(3)} \lt  \mathbf{d}_{k'} - \lt \mathbf{r}_{k'+1} - \mathbf{r}_{k'} \rt  \rt \rqq = \\
+	= \lqq  \frac{\sigma^{1-L}}{\sqrt{L} \lt \sqrt{2\pi } \rt^{L-1}}  \rqq^3    \rme{- \frac{1}{2\sigma^2} \sum_{k,q} \lqq   d_{k,1} A_{kq} d_{q,1}  +   d_{k,2} A_{kq} d_{q,2}  +  (d_{k,3} - R_0) A_{kq} (d_{q,3} - R_0)  \rqq } ,   
+	\label{eq:pdiff}
+\end{split}
+\ee
+\end{widetext}
+where $A_{kq} = L - \max(k,q) - (L-k)(L-q)/L = (L - \max(k,q)) \min(k,q) / L$. The correlations between different components $d_{k,i}$ can be worked out via the inverse \cite{MatInverse}
+\be
+C = A^{-1} =   \matb{ccccc}    
+	2 & -1 & 0 & 0 &   \\
+	-1 & 2 & -1 & 0 &   \\
+	0 & -1 & 2 & -1 &  \cdots  \\
+	0 & 0 & -1 & 2 &    \\
+	  &   &  \vdots &    & \ddots
+\mate,
+\label{eq:matC}
+\ee
+implying, 
+\be
+	\av{d_{k,i} d_{q,j}} - \av{d_{k,i}} \av{ d_{q,j}} = \sigma^2 \delta_{ij} \lt  2 \delta_{k,q} - \delta_{k,q+1} - \delta_{k,q-1}  \rt.
+\ee
+Subsequent distances are therefore (anti-)correlated, and these correlations pass onto any (non-trivial) function of the distances, and in particular the energy displacements $\delta V_k = V(d_k) - V(R_0)$.
+
+As a consistency check, we remark that $C(L)$ is a $(L-1)\times (L-1)$ matrix, whose determinant satisfies the recursion relation
+\be
+	\det C(L) = 2\det C(L-1) - \det C(L-2) 
+\ee
+with ``seed'' (or initial conditions) $\det C(2) = 2$ and $\det C(3) = 3$, which is solved by $\det C(L) = L$. Consequently, the factor $\lt \sqrt{\det A} \rt^3$ produced by the Gaussian integration over all variables exactly cancels the $L^{-3/2}$ appearing in the normalization factor, as expected.
+
+%All the marginal distributions for the single $\mathbf{d}_k$s, obtained via integration of the other $L-2$ variables from equation \eqref{eq:pdiff}, are equivalent and read
+%\be
+%	p_{\rm diff} (\mathbf{d}) = \frac{1}{(4\pi)^{3/2} \sigma_1 \sigma_2 \sigma_3 } \rme{-\frac{1}{4}  \lqq \frac{d_1^2}{\sigma_1^2}   +\frac{d_2^2}{\sigma_2^2} + \frac{(d_3 -r_0)^2}{\sigma_3^2}  \rqq         }.
+%	\label{eq:distr_simpl}
+%\ee
+%(obtained, e.g., from \eqref{eq:pdiff} in App.\ref{app:A} by integrating over all but one variable). The effect on the Lyapunov exponent is shown in Fig.~\ref{fig:lyap} and this approximation seems to get reasonably close to the original result. For generic $\sigma_\perp \neq \sigma_\parallel$ it is not possible to obtain a closed expression for the distribution of the distance $d = \sqrt{d_x^2 + d_y^2 + d_z^2}$, which can be expressed however as the integral
+
+
+\subsection{Marginal distribution for a single pair of atoms}
+
+The $\mathbf{d}_k$s are identically distributed, so we can select any given one (and drop its index for brevity) and integrate over the other $L-2$ variables from equation \eqref{eq:pdiff}. This yields
+\be
+\begin{split}
+	p_{\rm diff} (\mathbf{d}) = \frac{1}{(4\pi)^{3/2} \sigma^3 } \rme{-\frac{1}{4 \sigma^2}  \lqq d_1^2   +d_2^2 + (d_3 - R_0)^2  \rqq         } = \\
+	\frac{1}{(4\pi)^{3/2} \sigma^3 } \rme{-\frac{1}{4 \sigma^2}  \lqq d^2 + R_0^2 - 2 d_3 R_0  \rqq         },
+	\label{eq:distr_simpl}
+\end{split}
+\ee
+where $d = \abs{\mathbf{d}}$ denotes the distance between a pair of neighboring atoms. The distribution for this new variable can be then obtained via a solid angle integration and reads 
+\be	
+\begin{split}
+	p_{\rm dist} (d) = & \frac{d^2}{4(\pi)^{1/2} \sigma^3}  \rme{- \frac{1}{4\sigma^2} (d^2 + R_0^2) }  \int_0^\pi \rmd \theta   \sin\theta \,  \rme{-\frac{d R_0 \cos\theta }{2\sigma^2}}   \\
+	&= \frac{d}{\sqrt{\pi} \sigma R_0}  \rme{- \frac{1}{4\sigma^2} (d^2 + R_0^2) } \sinh \lt \frac{d R_0}{2\sigma^2} \rt.
+\end{split}
+\ee
+The distribution of an energy shift $\delta V$ is now just a change of variables ($d \to d(\delta V)$) away, according to $P(\delta V) = \abs{d'(\delta V)} p_{\rm dist} (d(\delta V))$.
+%%%
+For the sake of generality, we keep $\alpha$ generic in 
+\be
+	d(\delta V) = \lt \frac{C_\alpha}{V_0 + \delta V} \rt^\frac{1}{\alpha},
+\ee
+where $V_0 = C_\alpha / R_0^\alpha$, which implies
+\be
+	d'(\delta V) = -\frac{1}{\alpha} \frac{C_\alpha^{1/\alpha}}{(V_0 + \delta V)^{1+1/\alpha}}.
+\ee
+Hence, the distribution of energy shifts for a pair is
+\be
+\begin{split}
+	P (\delta V | V_0, R_0, \sigma) = \frac{\frac{R_0}{\sigma} }{\alpha \sqrt{\pi} V_0 \lt 1 + \frac{\delta V}{V_0}  \rt^{1 + \frac{2}{\alpha}}} \times \\
+	 \times \ \rme{-\frac{R_0^2}{4\sigma^2}  \lqq   1 + \lt 1 + \frac{\delta V}{V_0}  \rt^{-\frac{2}{\alpha}} \rqq} \times \\
+	 \times \ \sinh \lqq \frac{R_0^2}{2\sigma^2}  \lt 1 + \frac{\delta V}{V_0}  \rt^{-\frac{1}{\alpha}}  \rqq.
+\end{split}
+\ee
+It is relatively simple to see that, if we define the dimensionless quantities $\delta v = \delta V / V_0$ and $s = \sigma/R_0$, we can simplify this expression further:
+\be
+\begin{split}
+	P \lt \delta v | s \rt = \frac{1 }{\alpha \sqrt{\pi} s \lt 1 + \delta v  \rt^{1 + \frac{2}{\alpha}}} \times \\
+	 \times \ \rme{-\frac{1}{4s^2}  \lqq   1 + \lt 1 + \delta v \rt^{-\frac{2}{\alpha}} \rqq} \times \\
+	 \times \ \sinh \lqq \frac{1}{2s^2}  \lt 1 + \delta v  \rt^{-\frac{1}{\alpha}}  \rqq.
+\label{eq:simpl}
+\end{split}
+\ee
+
+The probability distribution function in Eq.~\eqref{eq:simpl} is defined in the domain $[-1,+\infty)$; for $\delta v = 1 + \varepsilon$, in the limit $\varepsilon \to 0^+$ it behaves as
+\be 
+	P\lt \delta v | s \rt \propto \varepsilon^{-1-\frac{2}{\alpha}} \rme{-\frac{1}{4s^2} \varepsilon^{-\frac{2}{\alpha}}} \sinh \lqq  \frac{\varepsilon^{-\frac{1}{\alpha}}}{2s^2} \rqq \to 0,
+\ee
+as the (vanishing) exponential factor dominates. In the opposite limit $\delta v \to \infty$, instead, the distribution behaves asymptotically as
+\be
+	P \lt \delta v | s \rt \approx \frac{1}{2\alpha \sqrt{\pi} s^3} \rme{-\frac{1}{4s^2}} \delta v^{-1 - 3/\alpha}.
+	\label{eq:asympt2}
+\ee
+This shows that this distribution is fat-tailed. In particular, all the distribution moments $\av{\delta v^\beta}$ with $\beta \geq 3/\alpha$ are not defined and, for both $\alpha = 3$ (dipole-dipole interactions) and $\alpha = 6$ (van der Waals), this includes all integer moments (e.g., the mean and variance). These fat tails are the consequence of the approximation of an atom's position distribution as a Gaussian everywhere in space, i.e., including points much further away from the center of a trap than a few $\sigma$s. In other words, it appears to be an artefact of the description, rather than something really physical. The result of this approximation is to allow for an extremely small (but not vanishing) probability that two atoms can be arbitrarily close, which, due to the algebraic scaling of the interactions, produces considerable energy shifts. Moments like the mean and variance are therefore dominated by the very rare events in which two atoms lie very close to each other. The rarity of such events is encoded in the exponential suppression $\rme{-(1/4s^2)}$ in Eq.~\eqref{eq:asympt2}. In principle, these unphysical fat tails could affect our results, as it is known that, in the Anderson problem, the scaling of the localization length is modified when Cauchy-like distributions are chosen instead of more regular ones. However, as mentioned above the fat tails in our case are strongly suppressed and one needs to assess how likely it is to actually probe them in a simulation or an experiment. For that purpose, let us first notice that the asymptotic behavior reported in \eqref{eq:asympt2} emerges when the argument of the $\sinh$ function in Eq.~\eqref{eq:simpl} is small, i.e., still assuming $\delta v \gg 1$, for
+\be
+	\delta v \gg \lt 2s^2 \rt^{-\alpha}.
+\ee
+Let us calculate now the probability of generating an energy shift within the tails, i.e.,
+\be 
+\begin{split}
+	\mathbb{P}_s \equiv \mathbb{P} \lt \delta v > \lt 2s^2 \rt^{-\alpha} \rt = \int_{\lt 2s^2 \rt^{-\alpha}}^\infty \rmd \delta v \, P(\delta v | s).
+\end{split}
+\ee
+Employing now the asymptotic expression \eqref{eq:asympt2} we obtain
+\be
+	\mathbb{P}_s = \mathbb{P} \lt \delta v > \lt 2s^2 \rt^{-\alpha} \rt  \approx \frac{4s^3}{3 \sqrt{\pi} } \rme{-\frac{1}{4s^2}} . 
+\ee
+This result apparently does not depend on $\alpha$, but we need to remember that the derivation assumes $\delta v \gg 1$, and is therefore only consistent if $(2s^2)^{-\alpha} \gg 1$. Considering $\alpha = 3$ or $6$, though, this is satisfied already for rather large disorder amplitudes, e.g., $s = 0.3$, which then yields $\mathbb{P}_{0.3} \approx 0.0013$. Due to the exponential factor, these probabilities decrease very fast with $s$. For $s = 0.1$, for instance, we get $\mathbb{P}_{0.1} \approx 10^{-14}$ and in the range spanned in the plots reported in the main text $s \leq 5 \times 10^{-4}$ this becomes $\mathbb{P}_{s} \ll 10^{-400000} $, which is clearly impossible to observe in any reasonable experiment or numerical procedure. Hence, we can safely assume the unphysical fat tails to be completely irrelevant in the determination of our numerical results in the regime considered.
+
+\subsection{Distribution bias towards positive energy shifts}
+
+As observed in the main text, there appears to be a bias of the distribution towards positive energy shifts, which makes the features present in the localization length plots bend towards higher energies. Considering the marginal discussed in the previous section, this seems counter-intuitive, since the distribution \eqref{eq:simpl} seems to shift, for increasing $s$, towards negative values instead, eventually becoming peaked very close to $\delta v \approx -1$. It is also possible to provide an intuitive explanation for this, since, as two neighboring traps becomes wider and wider, is becomes much more likely for two atoms to lie at a larger distance than the one separating the two centers, than it is for them to lie closer than that. The limiting case $s \gg R_0$ is indicative, as one can imagine that the atoms' positions can be picked uniformly in space on length scales $\gg R_0$.
+
+Although we do not hold at the moment a convincing explanation of why the shift seems to point in the opposite direction, we believe it is due to the correlated nature of the full distribution (which indeed would be consistent with not seeing the correct behavior in a marginal) and we provide a physical argument which partially supports this conjecture. For simplicity, we shall work here with a chain, rather than a ladder. We hypothesize that (A) the number $L + 1$ of atoms is large, i.e., $L + 1 \gg 1$ (this choice is such that the number of distances is $L$); (B) the disorder is extremely small $s \lll 1$. A useful simplification from (B) is that we can effectively reduce the dimensionality of the problem and only consider the position displacement along the $z$ direction: in fact, if we write $\mathbf{d} = (\delta x, \delta y, R_0 + \delta z)$, then 
+\be
+	d = \abs{\mathbf{d}} = R_0 + \delta z + O(\delta x^2, \delta y^2, \delta z^2) \approx R_0 + \delta z.
+\ee 
+Hence, we can extract the probability of the distances $d_k$ directly from Eq.~\eqref{eq:pdiff}:
+\be
+\begin{split}
+	p_{\rm dist} (d_1, \ldots , d_L) =   \frac{\sigma^{-L}}{\sqrt{L+1} \lt \sqrt{2\pi} \rt^{L}}   \times \\
+	\times \rme{- \frac{1}{2\sigma^2} \sum_{k,q}  (d_{k} - R_0) A_{kq} (d_{q} - R_0)   },
+\end{split}
+\ee
+with the same $A_{k,q}$ (up to increasing $L$ by $1$). Clearly, the marginal for any given variable $d_k$ is also Gaussian and its mean and variance can be straightforwardly extracted from the expression above:
+\be
+	\av{d_k} = R_0 \mand \sqrt{\av{d_k^2} - R_0^2} = \sqrt{\sigma^2 (A^{-1})_{kk}} = \sqrt{2} \sigma. 
+\ee
+These variables are therefore identically distributed and, due to the boundedness of the covariance (see matrix $C$ in Eq.~\eqref{eq:matC}), satisfy a generalized weak law of large numbers, as we demonstrate below for this very special case: let us define $D = (\sum_k d_k) / L$ and consider the probability $\mathbb{P} (\abs{D - R_0} > \varepsilon)$ of a fluctuation $\> \varepsilon$ around the mean value. By Chebyshev's inequality,
+\be
+	\mathbb{P} (\abs{D - R_0} > \varepsilon) \leq \frac{{\rm Var} D}{\varepsilon^2},
+	\label{eq:Cheby}
+\ee
+where 
+\be
+\begin{split}
+	{\rm Var} D & = \frac{\av{ \lt \sum_k \lt d_k - R_0 \rt \rt^2}}{L^2} = \\
+	 & \frac{1}{L^2} \sum_{k,q} \av{(d_k - R_0)(d_q - R_0)} =   \frac{\sigma^2}{L^2} \sum_{k,q} C_{k,q},
+\end{split}
+\ee
+where $C_{k,q}$ are the elements of the matrix $C = A^{-1}$ in Eq.~\eqref{eq:matC}. This sum is not difficult to calculate, since each row but the first and the last totals $0$, whereas the first and last contribute $1$ each, implying ${\rm Var} D = 2 \sigma^2 / L^2$. As a consequence, by choosing a sufficiently large $L$ the r.h.s.~in Eq.~\eqref{eq:Cheby} can be made arbitrarily small or, more precisely, $\forall \delta >0 \,\, \exists \bar{L} : \forall L > \bar{L}$
+\be 
+	\mathbb{P}(\abs{D - R_0} > \varepsilon) \leq \delta,
+\ee
+and therefore $D \to R_0$ in probability. Note that, had we been dealing with independent variables, we would have retrieved a result where ${\rm Var} D \sim 1/L$ instead of $1/L^2$. On a less formal level, this can be understood as follows: consider that, in this effective one-dimensional picture, the sum of all distances corresponds to the distance between the first and last atoms. When generating the positions independently, this variable will not be affected by the random nature of the positions of all the intermediate ones; instead, if one were to generate the distances as independent variables, these would effectuate a random walk (with drift $R_0$) and thus the effective uncertainty in the position of the last atom, assuming knowledge of the first one, would be of order $O(\sqrt{L})$ and increase with the length of the chain.
+
+Now, consider that, having chosen repulsive interactions ($V(R) > 0$), the interaction potential is a convex function. Hence, we can write down Jensen's inequality as
+\be
+	\frac{\sum_k V(d_k)}{L} \geq V\lt  \frac{\sum_k d_k}{L}  \rt.
+\ee
+By the weak law of large numbers, for large $L \gg 1$ we can effectively replace the r.h.s.~ of the inequality above with $V(R_0)$, which leaves us with the approximate statement
+\be
+	\sum_k V(d_k) \gtrsim L V(R_0),
+\ee
+i.e.,
+\be
+	\sum_k \lt V(d_k) - V(R_0) \rt \gtrsim 0,
+\ee
+i.e.,
+\be
+	\sum_k \delta V_k \gtrsim 0.
+\ee
+Albeit not a rigorous proof, this argument provides a clear indication that, for sufficiently large system sizes, the correlations among the variables will make positive biases in the energy shifts preferable to negative ones, in agreement with the qualitative features observed in the main text. Accepting this claim, there must be at least a point $s > 0$ where this bias is strictly positive. It then follows that there exists a right neighborhood of $s = 0$ in which the bias increases with $s$.
+
+
+
+\section{Hilbert space reductions and restricted Hamiltonians}
+The Hamiltonian introduced in the main text reads 
+\begin{align}
+ \op{H} = \underbrace{\Omega \, \sum_k^N  \op{\sigma}_x^{(k)} }_{\op{H}_1}\, + \, \underbrace{ \Delta\, \sum_k^N\,\op{n}_k +\,  \,
+ \sum_{\substack{k= 1\\ m \ne k}}^N \, \ha V(d_{km}) \, \op{n}_m\, \op{n}_k }_{\op{H}_0},
+ \label{Eq:Hamil_full}
+\end{align}
+where $d_{km}$ denotes the distance between the $k$-th and $m$-th atoms. In order to exploit the large energy separations present in the system, we switch to the interaction picture
+\be
+\begin{split}
+	\op{H}_I (t) = \rme{i\op{H}_0 t} \op{H}_1 \rme{-\rmi\op{H}_0 t} = \Omega \sum_k \rme{\rmi\op{H}_0 t} \op{\sigma}^{(k)}_x \rme{-\rmi\op{H}_0 t}. 
+\end{split}
+	\label{eq:HI}
+\ee
+Recalling that $\comm{\op{\sigma}_x^{(k)}}{\op{n}_m} = 0$ for every $k \neq m$ and that $\op{\sigma}_x^{(k)} \op{n}_k = (1 - \op{n}_k) \op{\sigma}_x^{(k)}$ we can simplify the $k$-th addend in Eq.~\eqref{eq:HI}
+\be
+\begin{split}
+	\rme{\rmi\op{H}_0 t} \op{\sigma}^{(k)}_x \rme{-\rmi\op{H}_0 t} & = \rme{\rmi t \op{n}_k (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} \op{\sigma}_x^{(k)}  \times \\ 
+	& \times \rme{-\rmi t \op{n}_k (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} = \\
+	& = \rme{\rmi t (2\op{n}_k - 1) (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} \op{\sigma}_x^{(k)},
+\end{split}
+\ee
+where in the first equality we singled out in the exponentials all the terms which depend upon $\op{n}_k$; all the remaining ones cancel out. The Hamiltonian $\op{H}_I$ can then be written as
+\be
+	\op{H}_I (t) = \Omega \sum_k \rme{\rmi t (2\op{n}_k - 1) (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} \op{\sigma}_x^{(k)}.
+\ee
+We wish now to employ a rotating-wave approximation scheme to discard all terms which oscillate fast in time. This implies that the oscillation frequency $\omega$ should be $\gg \Omega$ for a term to be neglected. Note that the frequency $\omega$ is however operator-valued:
+\be
+	\omega = (2\op{n}_k - 1) (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m).
+\ee
+Since the prefactor $-1 \leq 2\op{n}_k - 1 \leq 1$ is of order $O(1)$, it is the second factor which is decisive for the selection. We introduce now for every site $k$ a projector $\op{P}_k$ over all states where there is a single excitation among the neighbors of $k$ and no additional one within a radius $2 R_0$. Its specific structure depends clearly on the structure of the lattice, but if we define by $\mal{F}_k$ the set of nearest-neighboring sites of $k$ and by $\mal{S}_k$ the set of sites within a distance $2R_0$ from $k$ which are neither site $k$ itself nor one of the sites in $\mal{F}_k$, then we can give an implicit definition according to
+\be
+	\op{P}_k = \sum_{q \in \mal{F}_k} \op{n}_q \prod_{q' \in \mal{F}_k, \\ q' \neq q} (1 - \op{n}_{q'}) \prod_{q'' \in \mal{S}_k} (1 - \op{n}_{q''}).
+	\label{eq:defP}
+\ee
+Checking that the expression above satisfies $\lt \op{P}_k \rt^2 = \op{P}_k$ is straightforward if one recalls that $\op{n}_q^2 = \op{n}_q$ and $(1 - \op{n}_q)^2 = 1 - \op{n}_q$ $\forall \,\,q$. The relevance of the projector $\op{P}_k$ is that it precisely identifies the constraints -- identified in the main text -- under which a spin (or atom) is able to flip (or being excited/de-excited). Slightly more formally,
+\be
+	(\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m) \op{P}_k = (\Delta  - V(R_0)) \op{P}_k = 0.
+\ee
+Furthermore, note that according to definition \eqref{eq:defP} $\op{P}_k$ acts trivially on site $k$ and thus commutes with all local operators which instead exclusively act on that site; in particular, $\comm{\op{\sigma}_x^{(k)}}{\op{P}_k} = 0$. Defining for brevity $\op{Q}_k = \mathbb{1} - \op{P}_k$ the projector onto the orthogonal subspace ($\op{Q}_k^2 = \op{Q}_k$, $\op{Q}_k \op{P}_k = 0$) we thus have
+\be
+\begin{split}
+	& \op{\sigma}_x^{(k)} = \lt \op{P}_k + \op{Q}_k \rt	\op{\sigma}_x^{(k)}\lt \op{P}_k + \op{Q}_k \rt = \\
+	&= \op{P}_k \op{\sigma}_x^{(k)}\op{P}_k + \underbrace{\op{Q}_k \op{\sigma}_x^{(k)}\op{P}_k}_{=0} + \underbrace{\op{Q}_k \op{\sigma}_x^{(k)}\op{P}_k}_{=0} + \op{Q}_k \op{\sigma}_x^{(k)}\op{Q}_k = \\
+	& = \op{P}_k \op{\sigma}_x^{(k)} + \op{Q}_k \op{\sigma}_x^{(k)}.
+\end{split}
+\ee
+Hence, we can separate the interaction Hamiltonian $\op{H}_I$ into two contributions:
+\be
+\begin{split}
+	\op{H}_I(t) &= \Omega \sum_{k} \op{P}_k \op{\sigma}_x^{(k)} + \\
+	&+ \rme{\rmi t (2\op{n}_k - 1) (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} \op{Q}_k \op{\sigma}_x^{(k)}.
+\end{split}
+\ee
+The space of configurations onto which $\op{Q}_k$ has support can be further split into three classes:
+\begin{itemize}
+	\item[(A)] States where site $k$ has two or more excited nearest neighbors;
+	\item[(B)] States where site $k$ has only one excited neighbor, but there is at least another excitation within a radius $2R_0$;
+	\item[(C)] States where no neighbors of $k$ are excited.
+\end{itemize}
+In case (A) the interaction potential on site $k$ is $\geq 2V(R_0)$; accounting for the detuning $\Delta = -V(R_0)$ we find $\omega \gtrsim V(R_0) \gg \Omega$; these terms are thereby oscillating very fast and can be discarded. Terms of type (B) are facilitated by the single neighboring excitation, but the presence of an additional one within a distance $2R_0$ implies that
+\be
+	\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m \geq V(2R_0) 
+\ee
+and therefore $\omega \gtrsim V(2R_0) \gg \Omega$, which allows us to neglect all type-(B) contributions as well. Terms belonging to class (C) are instead more delicate, since an appropriate combination of the interactions with many excitations at different distances could approximately cancel out the detuning $\Delta$. For instance, for dipole-dipole interactions ($\alpha = 3$) the potential obeys $V(\gamma R_0) = V(R_0) \gamma^{-3}$; considering a honeycomb lattice with $5$ excited next-nearest neighbors at distance $R_1 = \sqrt{3} R_0$ and a single excited next-next-next-next-nearest (or fourth-nearest for brevity) neighbor at distance $R_4 = 3R_0$ one finds 
+\be
+\begin{split}
+	\Delta + \sum_{m \notin \mal{F}_k} V(d_{km}) \to - V(R_0) + 5 V(R_1) + V(R_4) = \\
+	=  V(R_0) \lt  -1 + \frac{5}{3\sqrt{3}} + \frac{1}{3^3} \rt \approx -0.00071 \, V(R_0).
+\end{split}
+\ee
+However, configurations such as the one described above always require a large local density of excitations, and hence can only affect Hilbert subspaces at higher energies than the ones considered in the main text, separated at least by some factors of $V(R_1) \gg \Omega$. As long as we consider the low-energy Hilbert subspaces, it is thus fine to neglect terms of type (C) as well. Overall, in the subspaces we are interested in we can approximate
+\be 
+	\op{H}_I (t) \approx \Omega \sum_k \op{P}_k \op{\sigma}_x^{(k)}.
+\ee
+Going back to the original Schr\"odinger representation is now straightforward and yields
+\be
+	\op{H} \approx \Omega \sum_k \op{P}_k \op{\sigma}_x^{(k)} + \Delta \sum_k \op{n}_k +  \sum_{\substack{k= 1\\ m \ne k}}^N \, \ha V(d_{km}) \, \op{n}_m\, \op{n}_k.
+\ee
+Note that in the specific subspace (let us call it $\mal{H}_1$) considered in the main text, the one including all possible one-excitation states plus all possible pairs of neighboring ones, the ``diagonal'' part $\op{H}_0$ acts trivially as the null operator and can thus be discarded, implying
+\be
+	\op{H}_{\mal{H}_1} = \Omega \sum_k \op{P}_k \op{\sigma}_x^{(k)}.
+\label{eq:HH1}
+\ee
+We remark that the same derivation can be followed in the presence of weak disorder by changing the definition of $\op{H}_1$ in Eq.~\eqref{Eq:Hamil_full} to
+\be
+	\op{H}_1 = \Omega \sum_k  \op{\sigma}_x^{(k)} + \ha \sum_{k\neq q} \delta V (d_{kq}) \op{n}_k \op{n}_q.
+\ee
+Since the second term is diagonal and commutes with $\op{H}_0$, the calculation of the interaction picture is straightforward:
+\be
+\begin{split}
+	\op{H}_I (t) &= \Omega \sum_k \rme{it (2\op{n}_k - 1) (\Delta + \sum_{m \neq k} V(d_{km}) \op{n}_m)} \op{\sigma}_x^{(k)} + \\
+	&+ \ha \sum_{k\neq q} \delta V (d_{kq}) \op{n}_k \op{n}_q
+\end{split}
+\ee
+and one can follow the same steps outlined above.
+
+
+
+\subsection{Hilbert space lattice structure}
+
+Having derived the restricted Hamiltonian \eqref{eq:HH1} we can now identify the geometric structure of the Hilbert space in the $\op{\sigma}_z^{(k)}$ basis. To start with, we introduce the following definitions for the basis itself: we call $\ket{M_k}$ states with a single excitation present on site $k$, whereas we denote by $\ket{N_{kq}}$ states with a pair of excitations on sites $k$ and $q$. Fixing the number $N$ of tweezers, the Hilbert subspace we work in is therefore defined as
+\be
+	 \mal{H}_1 = Span \left\{  \ket{M_k}, \ket{N_{kq}} |\,  k = 1 , \ldots , N ; q \in \mal{F}_k  \right\},
+\ee
+where we recall that $\mal{F}_k$ is the set of nearest neighbors of site $k$. Note that, since $\ket{N_{kq}} = \ket{N_{qk}}$ the pair states are doubly counted; however, this clearly still leads to the generation of the same vector space. Alternatively, one can also define an equivalence relation $\ket{N_{kq}} \sim \ket{N_{ml}} \Leftrightarrow (k=m \wedge q = l)\vee(k=l \wedge q = m)$ and take the quotient of the r.h.s.~above. In the following, it is understood that the states $\ket{N_{kq}}$ are always taken from this space, i.e., we shall never consider states with two isolated excitations at distance $d > R_0$. 
+
+By construction, $\op{H}_{\mal{H}_1} \mal{H}_1 \subseteq \mal{H}_1$. Furthermore, we know that the action of $\op{P}_k \op{\sigma}_x^{(k)}$ is to flip the spin in site $k$ conditioned on the presence of a single excitation in $\mal{F}_k$ and no additional one in $\mal{S}_k$. This implies 
+\be
+	\op{P}_k \op{\sigma}_x^{(k)} \ket{M_l} = \sysb{lcc} 0 & \text{if} & l = k,  \\
+													\ket{N_{kq}} & \text{if} & l \in \mal{F}_k, \\													0 & \text{otherwise}. & \  \syse 
+\ee
+Considering that $l \in \mal{F}_k \Leftrightarrow k \in \mal{F}_l$, one can see that
+\be
+	\op{H}_{\mal{H}_1} \ket{M_l} = \Omega \sum_{k \in \mal{F}_l} \ket{N_{kl}}. 
+\ee
+
+Similarly, 
+\be
+	\op{P}_k \op{\sigma}_x^{(k)} \ket{N_{ql}} = \sysb{lcc} \ket{M_l} & \text{if} & q = k,  \\
+													\ket{M_q} & \text{if} & l=k, \\													0 & \text{otherwise}, & \  \syse 
+\ee
+since by construction the only facilitated spins are in sites $q$ and $l$. Hence,
+\be
+	\op{H}_{\mal{H}_1} \ket{N_{ql}} = \Omega \lt \ket{M_q} + \ket{M_l} \rt.
+\ee
+
+Collecting these considerations, we can find the Hamiltonian matrix elements:
+\begin{subequations}
+\begin{align}
+	\bra{M_q} \op{H}_{\mal{H}_1} \ket{M_k} &= 0 \label{eq:mat_elem1}\\
+	\bra{N_{ml}} \op{H}_{\mal{H}_1} \ket{N_{kq}} & = 0 \\
+	\bra{N_{ml}} \op{H}_{\mal{H}_1} \ket{M_k} &= \sysb{lcc} \Omega & \text{if} & l = k,  \\
+													\Omega & \text{if} & m=k, \\													0 & \text{otherwise}. & \  \syse 
+													\label{eq:mat_elem3}
+\end{align}
+\end{subequations}
+Now, there are as many states $\ket{M_k}$ as there are sites, so it is natural to connect the two: starting from the geometry of the tweezer array, which defines the original lattice structure, we place for visual aid each state $\ket{M_k}$ on the corresponding site $k$. Crucially, each pair state $\ket{N_{kq}}$ is exclusively connected (via the Hamiltonian) to the two one-excitation states $\ket{M_k}$ and $\ket{M_q}$, so it is quite natural to place it in the middle point between sites $k$ and $q$, changing the structure to a generalized Lieb lattice. Now, by drawing a link between any pair of sites every time the corresponding states yield a non-zero Hamiltonian matrix element one precisely reconstructs the kind of lattices we displayed in Fig.~$1$ in the main text. Note that this construction is general and it is much more easily implemented pictorially than it is by following the steps described in this section.
+
+
+
+\section{Bound on the number of flat bands}
+
+
+We provide here an account of the bound $n_{\rm flat} \geq \abs{n_1 - n_2}$ mentioned in the main text, where we recall that $n_{\rm flat}$ denotes the number of flat bands in the model, $n_1$ the number of one-particle states per unit cell and $n_2$ the corresponding number of pair states per unit cell. Before doing that, however, we briefly comment on the fact that the spectrum of the hopping Hamiltonians \eqref{eq:HH1} is always symmetric with respect to $\epsilon=0$. In fact, one can define the parity transformation 
+\be
+	\op{U} = \op{U}^\dag = \lt -1 \rt^{\sum_k \op{n}_k}
+\ee
+which, in the subspace $\mal{H}_1$ act according to $\op{U} \ket{M_k} = - \ket{M_k}$ on all one-excitation states and $\op{U} \ket{N_{kq}} = \ket{N_{kq}}$ on all pair states. Combined with Eqs.~\eqref{eq:mat_elem1}-\eqref{eq:mat_elem3}, this implies $\op{U}^\dag \op{H}_{\mal{H}_1} \op{U} = - \op{H}_{\mal{H}_1}$. Hence, if $\ket{\epsilon}$ is an eigenvector of the Hamiltonian at energy $\epsilon$, then $\op{U} \ket{\epsilon}$ is also an eigenvector, but at eigenvalue $-\epsilon$, proving the symmetry of the spectrum under reflection $\epsilon \to -\epsilon$. 
+
+
+
+%some generic properties of the effective hopping models obtained by taking a facilitated (anti-blockaded) Rydberg model on a \emph{regular} lattice $\mal{L}$ and neglecting completely the possibility of having more than two neighbouring excitations at the same time. $\mal{L}$ is a graph, i.e., a set of (lattice) points $\vec{l}$ and of bonds joining pairs of them, which are then identified as nearest neighbours. We assume for simplicity that the facilitation distance is set equal to the lattice spacing $a$. Calling $N$ the number of points in the lattice and $B$ the total number of bonds connecting them, we can make the following considerations: the truncation of the Hilbert space leaves us with a subspace containing $N$ states with a single excitation and $B$ states where a single pair of neighbouring excitations is present. We call the former \emph{main} states and the latter \emph{intermediate} states. A main state is only connected to intermediate ones via the Hamiltonian $H$ and, vice versa, an intermediate state is exclusively connected to \emph{two} main states. One can therefore see that the connectivity in the Hilbert subspace of interest can be represented as a lattice $\mal{L}'$ similar to the one in real space, but with an additional site added on top of every bond. It may also be worth mentioning the following: introducing the unitary transformation $U$ which leaves intermediate states unchanged ($U \ket{\dar \uar \uar \dar} = \ket{\dar \uar \uar \dar}$) and adds a phase $-1$ to main states ($U \ket{\dar \uar \dar} = -\ket{\dar \uar \dar}$) changes the overall sign of the Hamiltonian $H$ ($U^\dag H U = - H$), implying that the spectrum is symmetric with respect to $0$ or, in other words, that if $E$ is an eigenvalue then $-E$ is one as well. 
+
+We start directly from the synthetic lattice reconstructed in the Hilbert space according to the procedure described in the previous section. This structure is not in general a Bravais lattice and needs, as a first step, to be reduced to one by identifying an appropriate ``basis''. This is a standard procedure in crystallography and solid state physics and we refer the reader to any good introductory textbook (see e.g., \cite{Grosso}). For the reader's convenience, we however recall here just a few of the most basic concepts: a Bravais lattice is a lattice structure where the positions $\vec{l}$ of the lattice sites correspond to discrete translations 
+\be
+	\vec{l} = \sum_{i=1}^d z_i \vec{a}_i  \ \ \ \text{with} \ \ z_i \in \Z.
+	\label{eq:realvec}
+\ee
+generated by a set of $d$ linearly-independent \emph{primitive lattice vectors} $\vec{a}_i$ ($i = 1 \ldots d$), where $d$ is the dimensionality of the system. If a site is located at the origin, all sites can be found this way and all points at positions $\vec{l}$ are lattice sites. Any lattice is, by definition, a periodically repeating pattern, and is therefore invariant under a certain set of translations by $\vec{l}$ for some specific choice of the primitive lattice vectors. However, in many cases an additional set of $B$ vectors $\set{\vec{b}_1 , \ldots \vec{b}_B}$, called ``basis'', is required. In such cases, and fixing conventionally $\vec{b}_1 = 0$ which can be done without loss of generality, if one lattice point is located at the origin, every point at a position $\vec{l}$ is also a lattice site, but not all lattice sites are at positions $\vec{l}$. All of them are instead found at positions $\vec{l} + \vec{b}_j$ with $j =1, \ldots ,B$. We also remark that distances between sites in the synthetic lattice are not meaningful, being just a convenient way to visualize the structure of the Hilbert space. Hence, we are free to rescale the length of all (dimensionless) vectors $\vec{a}_i$, $\vec{b}_i$ by a common factor. In all the examples discussed below the primitive lattice vectors have the same length and we shall chose to normalize them to unit length ($\abs{\vec{a}_i} = 1$). Also, for brevity in the following we refer to the $\R^d$ space where these vectors live as the \emph{direct space}.
+
+We also introduce the reciprocal lattice vectors $\vec{a}_i^\ast$, $i = 1 \ldots d$ which satisfy the defining relations
+\be
+	\vec{a}_i^\ast \cdot \vec{a}_j = 2\pi \delta_{ij}.
+\ee
+The reciprocal Bravais lattice is then reconstructed by taking integer combinations of these vectors, i.e.,
+\be
+	\vec{G} = \sum_{i=1}^d z_i^\ast \vec{a}_i^\ast \ \ \ \text{with} \ \ z_i^\ast \in \mathbb Z.
+	\label{eq:rec}
+\ee
+Exactly like in direct space, one can define a unit cell $\mal{U}^\ast$ like a portion of $\R^d$ which contains only one reciprocal lattice point and, repeated periodically in space under all possible translations $\vec{G}$ tiles $\R^d$ entirely and without overlaps. From a slightly different (but equivalent) perspective, one can define the equivalence relation between vectors $\vec{k}$, $\vec{q} \in \R^d$ living in reciprocal space
+\be 
+	\vec{k} \sim \vec{q} \Leftrightarrow \exists\, \vec{G} \,|\, \vec{k} = \vec{q} + \vec{G}
+\ee
+with $\vec{G}$ a reciprocal \emph{lattice} vector. Hence, the unit cell may be defined as a representative from the quotient \change{$\R^d / \sim$}. By defining quasi-momenta $\vec{k}$ as reciprocal space vectors belonging to a unit cell $\mal{U}^\ast$, one can define a Fourier series in the usual way for any generic quantity $A_{\vec{l}}$ living on the direct-space Bravais lattice  
+\be
+	\wt{A}_{\vec{k}} =  \sum_{\vec{l}} \rme{-i \vec{k} \cdot \vec{l}} A_{\vec{l}} \,.
+\ee
+The corresponding inverse transform is also standard:
+\be
+	A_{\vec{l}} = \int_{\mal{U}^\ast} \frac{\rmd^d k}{(2\pi)^d} \,\rme{i \vec{k} \cdot \vec{l}}\, \wt{A}_{\vec{k}} \,,
+\ee
+as can be shown remembering that
+\be
+	\frac{\vec{G} \cdot \vec{l}}{2\pi} \in \Z
+\ee
+and using the Poisson-summation-derived distributional identity
+\be
+	\sum_{z\in \Z} \rme{-\rmi \alpha z} = \sum_{m \in \Z} 2 \pi \delta (\alpha + 2\pi m),
+\ee
+with $\alpha \in \R$ and $\delta$ the Dirac delta. The choice of the unit cell is not unique; in the following we assume to be working in the \emph{first Brillouin zone} $\mal{B}$ \cite{Grosso}.
+
+
+Clearly, the definitions above do not hinge upon working in a specific space and, indeed, one can analogously define a unit cell in direct space which contains a single Bravais lattice point. Hence, such a unit cell includes $B$ synthetic lattice points. It is quite natural to subdivide them according to whether they are of the ``one-excitation'' or ``pair'' kind. As done in the main text, we define $n_1$ the number of one-excitation states in a unit cell and $n_2 = B - n_1$ the number of pair ones. For example,
+\begin{itemize}
+	\item Synthetic square lattice (Lieb lattice): $n_1 = 1$, $n_2 = 2$, $B = 3$.
+	\item Synthetic triangular lattice: $n_1 = 1$, $n_2 = 3$, $B = 4$.
+	\item Synthetic honeycomb lattice: $n_1 = 2$, $n_2 = 3$, $B = 5$.
+\end{itemize}
+Since each synthetic lattice point can be uniquely associated to a given primitive lattice vector $\vec{l}$ and basis vector $\vec{b}_i$, we can unambiguously denote each state in the Hilbert subspace $\mal{H}_1$ as a tensor product $\ket{\vec{l}} \otimes \ket{\vec{b}_i}$. For later convenience, we now wish to distinguish between the basis vectors identifying one-excitation states $\left(\ket{\vec{b}_i} \to \ket{\mu_j}\,,j=1 ,\ldots, n_1\right)$ and pair states
+$ \left(\ket{\vec{b}_i} \to \ket{\nu_j}\,,j=1 ,\ldots, n_2\right)$, so that the space of basis states is equivalently generated as
+\be
+	Span \set{  \ket{\mu_1}, \ldots \ket{\mu_{n_1}}, \ket{\nu_1} , \ldots, \ket{\nu_{n_2}} }.
+\ee
+Consequently, there is a bijective correspondence between states $\ket{M_k}$ and states $\ket{\vec{l}} \otimes \ket{\mu_i}$ and between states $\ket{N_{kq}}$ and states $\ket{\vec{l}} \otimes \ket{\nu_i}$.
+
+
+For later convenience, we define the lattice translation operator $T_{\vec{j}}$, where $\vec{j}$ is a Bravais lattice vector, which acts on the positional degrees of freedom according to
+\be
+	T_{\vec{j}} \ket{\vec{l}} = \ket{\vec{l} + \vec{j}}.
+\ee
+By the straightforward quasi-momentum states definition
+\be
+	\ket{\vec{k}} =  \sum_{\vec{l}} \rme{-i \vec{k} \cdot \vec{l}}  \ket{\vec{l}}
+\ee
+one also gets
+\be
+	T_{\vec{j}} \ket{k} = \rme{i\vec{k} \cdot \vec{j}} \ket{\vec{k}}.
+\ee
+The Hamiltonian can now be generically characterized as a sum of terms 
+\be
+\begin{split}
+	\op{H}_{\mal{H}_1} = \Omega \sum_{\vec{l}}   \sum_{\vec{j}} \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lt C_{\vec{j},m,n}   \ket{\mu_m} \bra{\nu_n}   + \right. \\
+	+ \left. D_{\vec{j},m,n}   \ket{\nu_n} \bra{\mu_m}   \rt \ket{\vec{l} + \vec{j}}  \bra{\vec{l}}  \, ,
+\end{split}
+\ee
+where $C_{\vec{j}}$ and $D_{\vec{j}}$ are collections of connectivity matrices with elements $1$ (if two states are linked) and $0$ (if the two states are not). For instance, if the Hamiltonian can cause a hop from $\vec{l}$ to $\vec{l} + \vec{a}_1$ accompanied by a change $\ket{\mu_1} \to \ket{\nu_1}$, then $D_{\vec{a}_1,1,1} = 1$. Note that these are, in general, rectangular matrices of size $n_1 \times n_2$. Furthermore, to ensure that $H$ is hermitian they must satisfy
+\be
+	C_{-\vec{j},m,n} = D_{\vec{j},m,n}^\ast = D_{\vec{j},m,n},
+\ee
+where the last equality comes from the fact that they are defined to be real (their elements being either $0$ or $1$). Note that no terms $\propto \ket{\mu_m} \bra{\mu_n} $ or $\ket{\nu_m} \bra{\nu_n} $ appear, as one-excitation states are exclusively connected to pair ones and vice versa (see Eqs.~\eqref{eq:mat_elem1}-\eqref{eq:mat_elem3}). Neither $C$ nor $D$ depends explicitly on $\vec{l}$, as otherwise the form of the Hamiltonian would be dependent upon the specific choice of which Bravais lattice point should act as the origin of coordinates, whereas by construction all points separated by a Bravais lattice vector should be equivalent. In this form, it is not difficult to exploit this  symmetry of the Hamiltonian under discrete lattice translations to partially diagonalize it in terms of Fourier modes:
+\begin{widetext}
+\be
+\begin{split}
+	\op{H}_{\mal{H}_1} & = \Omega \sum_{\vec{l}}   \sum_{\vec{j}} \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lt C_{\vec{j},m,n}   \ket{\mu_m} \bra{\nu_n}   + C_{-\vec{j},m,n}   \ket{\nu_n} \bra{\mu_m}   \rt T_{\vec{j}} \ket{\vec{l} }  \bra{\vec{l}} = \\
+	& = \Omega    \sum_{\vec{j}} \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lt C_{\vec{j},m,n}   \ket{\mu_m} \bra{\nu_n}   + C_{-\vec{j},m,n}   \ket{\nu_n} \bra{\mu_m}   \rt T_{\vec{j}}  \sum_{\vec{l}} \ket{\vec{l} }  \bra{\vec{l}} = \\
+	& = \Omega    \sum_{\vec{j}} \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lt C_{\vec{j},m,n}   \ket{\mu_m} \bra{\nu_n}   + C_{-\vec{j},m,n}   \ket{\nu_n} \bra{\mu_m}  \rt T_{\vec{j}}  \int_{\mal{B}}   \frac{\rmd^d k}{(2\pi)^d} \, \proj{\vec{k}}   = \\
+	& = \Omega  \int_{\mal{B}}   \frac{\rmd^d k}{(2\pi)^d} \,  \sum_{\vec{j}} \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lt C_{\vec{j},m,n}   \ket{\mu_m} \bra{\nu_n}   + C_{-\vec{j},m,n}   \ket{\nu_n} \bra{\mu_m}   \rt \rme{i\vec{k} \cdot \vec{j}}  \ket{\vec{k} }  \bra{\vec{k}} = \\
+	& =  \Omega  \int_{\mal{B}}   \frac{\rmd^d k}{(2\pi)^d} \, \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lqq  \lt \sum_{\vec{j}} C_{\vec{j},m,n} \rme{i\vec{k} \cdot \vec{j}}  \rt \ket{\mu_m} \bra{\nu_n} + \lt \sum_{\vec{j}} C_{\vec{j},m,n} \rme{i\vec{k} \cdot \vec{j}}  \rt^\ast \ket{\nu_n} \bra{\mu_m}   \rqq \proj{\vec{k}} = \\
+	& = \Omega \int_{\mal{B}}   \frac{\rmd^d k}{(2\pi)^d} \, \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lqq  \wt{C}_{-\vec{k},m,n}  \ket{\mu_m} \bra{\nu_n} + \lt \wt{C}_{-\vec{k},m,n} \rt^\ast \ket{\nu_n} \bra{\mu_m}   \rqq \proj{\vec{k}} ,
+\end{split}
+\ee
+\end{widetext}
+where again
+\be
+	\wt{C}_{-\vec{k},m,n} = \lt \sum_{\vec{j}} C_{\vec{j},m,n} \rme{i\vec{k} \cdot \vec{j}}  \rt
+\ee
+is, for every $\vec{k} \in \mal{B}$, a rectangular $n_1 \times n_2$ matrix. Calling now
+\be
+	\op{M}_{\vec{k}} = \sum_{m= 1}^{n_1} \sum_{n=1}^{n_2} \lqq  \wt{C}_{-\vec{k},m,n}  \ket{\mu_m} \bra{\nu_n} + h.c.   \rqq,
+\ee
+we can represent it as a matrix in the basis $\set{\ket{\mu_1}, \ldots, \ket{\mu_{n_1}}, \ket{\nu_1}, \ldots, \ket{\nu_{n_2}}} $, which yields
+\be
+	M_{\vec{k}} = \matb{c|c}  0 & \wt{C}_{-\vec{k}}  \\[1mm] \hline \\[-3mm] \wt{C}^\dag_{-\vec{k}} & 0   \mate.
+\ee
+Due to this particular block structure,
+\be
+	{\rm{Rank}} \set{M_{\vec{k}}} = \rm{Rank} \set{\wt{C}_{-\vec{k}}} + \rm{Rank} \set{\wt{C}^\dag_{-\vec{k}}} .
+\ee
+Furthermore, the rank of a rectangular matrix is never greater than its shortest side. In this case,
+\be
+	{\rm{Rank}} \set{\wt{C}_{-\vec{k}}} \leq  \min \set{n_1, n_2},
+\ee
+which in turn implies that the rank of the square matrix $M_{\vec{k}}$ is $\leq 2 \min \set{n_1, n_2}$. This means that the size of the kernel of $M_{\vec{k}}$ has a lower bound
+\be 
+\begin{split}
+	\dim  & \lt {\rm{Ker}} \, M_{\vec{k}} \rt  = B - {\rm{Rank}} \set{M_{\vec{k}}} \geq \\
+	& \geq  \lt n_1 + n_2 \rt - 2 \min \set{n_1, n_2} =  \\
+	& =  \max \set{n_1, n_2} -  \min \set{n_1, n_2} = \\
+	& =  \abs{n_1 - n_2}.
+\end{split}
+\ee
+Hence, if $\abs{n_1 - n_2} \geq 1$ then for every $\vec{k}$ one can find a kernel vector $\ket{v_{\vec{k}}}$ in the basis such that $\op{M}_{\vec{k}} \ket{v_{\vec{k}}} = 0$. Correspondingly, $\op{H}_{\mal{H}_1} \ket{\vec{k}} \otimes \ket{v_{\vec{k}}} = 0$ $\forall \vec{k}$ and the set of all these states forms a zero-energy flat band. Clearly, if $\abs{n_1 - n_2} > 1$ then more than one choice of $\ket{v}_{\ket{k}}$ can be made per each quasi-momentum $\vec{k}$, each identifying an independent flat band. Hence, calling the number of flat bands in the model $n_{\rm flat}$, consistently with the main text notation,
+\be
+	n_{\rm flat} = \dim   \lt {\rm{Ker}} \, M_{\vec{k}} \rt \geq \abs{n_1 - n_2},
+\ee
+which proves the bound.
+
+The general rules for filling the matrix elements of $\wt{C}_{\vec{k}}$ are the following:
+\begin{itemize}
+	\item Choose a lattice basis. It is typically convenient to do so in a relatively compact fashion, i.e., keeping the basis vectors ``short''.
+	\item Fix a column $1 \leq n \leq n_2$.
+	\item Consider the \emph{two} possible ways in which a particle can hop from the intermediate state $\ket{\nu_n}$ within the basis to its neighbors $\ket{\mu_m}$ and $\ket{\mu_p}$.
+	\item Add $\rme{\rmi\vec{k}\cdot \vec{j}_n}$ to $C_{-\vec{k},m,n}$ and $\rme{\rmi\vec{k}\cdot \vec{j}_p}$ to $C_-{\vec{k},p,n}$, where $\vec{j}_{m/p}$ are the lattice vectors pointing to the \emph{arrival} lattice sites.
+\end{itemize}
+In the next sections we work out some examples among the ones displayed in the main text. For simplicity, we set $\Omega = 1$.
+
+
+ 
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\subsection{Example: the triangular lattice}
+
+The triangular lattice (also called ``hexagonal'', although here we shall not adopt this convention to avoid confusion with the honeycomb lattice) is a two-dimensional Bravais lattice with primitive lattice vectors
+\be
+	\vec{a}_1 = a \lt 1,0   \rt^\intercal \mand \vec{a}_2 = a \lt \cos \frac{\pi}{3}, \sin \frac{\pi}{3}   \rt^\intercal ,
+\ee
+with $a$ the real-space lattice spacing. In the Hilbert space, we have again a triangular structure where a new site is added on each link. 
+%In a periodic (or infinitely-extended) lattice there are $6$ bonds departing from every site and each connects two. Hence, if $N$ is the total number of sites then the lattice has $3N$ bonds.
+
+It is not difficult to see that this reduces to a pure triangular lattice by choosing a basis of $4$ sites, a single one-excitation one ($n_1 = 1$) and $3$ pair ones ($n_2 = 3$). The primitive lattice vectors will be the same as above, where we fix for simplicity $a=1$. The basis states can be chosen according to:
+\begin{itemize}
+	\item[$\ket{\mu_1}$]: a one-excitation site at $\vec{b} = 0$.
+	\item[$\ket{\nu_1}$]: a pair site at $\vec{b} = \vec{a}_1 / 2$.
+	\item[$\ket{\nu_2}$]: a pair site at $\vec{b} = \vec{a}_2 / 2$.
+	\item[$\ket{\nu_3}$]: a pair site at $\vec{b} = (\vec{a}_1 - \vec{a}_2) / 2$.
+\end{itemize}
+The matrix $\wt{C}_{-\vec{k}}$ is now a $1 \times 3$ matrix whose elements can be computed via the procedure outlined above:
+\begin{itemize}
+	\item[$\wt{C}_{-\vec{k},1,1}$]: from basis state $\ket{\nu_1}$ one can reach state $\ket{\mu_1}$ within the same Bravais lattice site ($\Rightarrow +1$) or state $\ket{\mu_1}$ at the neighboring site $\vec{j} = \vec{a}_1$ ($\Rightarrow +\rme{\rmi\vec{k} \cdot \vec{a}_1}$).
+	\item[$\wt{C}_{-\vec{k},1,2}$]: from basis state $\ket{\nu_2}$ one can reach state $\ket{\mu_1}$ within the same site ($\Rightarrow +1$) or state $\ket{\mu_1}$ at the neighboring site $\vec{j} = \vec{a}_2$ ($\Rightarrow +\rme{\rmi\vec{k} \cdot \vec{a}_2}$).
+	\item[$\wt{C}_{-\vec{k},1,3}$]: from state $\ket{\nu_3}$ one can reach state $\ket{\mu_1}$ within the same site ($\Rightarrow +1$) or state $\ket{\mu_1}$ at the neighboring site $\vec{j} = \vec{a}_1 - \vec{a}_2$ ($\Rightarrow +\rme{\rmi\vec{k} \cdot (\vec{a}_1 - \vec{a}_2)}$).
+\end{itemize}
+Collecting all terms, the matrix $\wt{C}_{-\vec{k}}$ reads
+\be
+	\wt{C}_{-\vec{k}} = \matb{ccc} 1 + \rme{\rmi\vec{k} \cdot \vec{a}_1}, &   1 + \rme{\rmi\vec{k} \cdot \vec{a}_2} , &  1 + \rme{\rmi\vec{k} \cdot( \vec{a}_1 - \vec{a}_2)}   \mate \equiv \vec{w}_{\vec{k}}^\dag
+\ee
+and is equivalent to a three-dimensional vector $\vec{w}_{\vec{k}}$. Thus, the total matrix $M_{\vec{k}}$ can be expressed as 
+\be
+	M_{\vec{k}} = \matb{c|c} 0 & \vec{w}_{\vec{k}}^\dag  \\ \hline \\[-2mm] \vec{w}_{\vec{k}} & 0.    \mate  
+\ee
+There are two kernel states corresponding to four-dimensional vectors $(0,v_{\vec{k},1})$ and $(0,v_{\vec{k},2})$ with $\vec{w}^\dag_{\vec{k}} \cdot \vec{v}_{\vec{k},1/2} = 0$. These states thus reconstruct two flat bands, in line with the bound $n_{\rm flat} \geq 2$ of this case.
+ 
+The remaining two bands can be calculated instead by squaring ${M}_{\vec{k}}$:
+\be
+	M_{\vec{k}}^2 =  \matb{c|c} \vec{w}^\dag_{\vec{k}} \cdot \vec{w}_{\vec{k}} & 0  \\ \hline \\[-2mm] 0 & \vec{w}_{\vec{k}} \otimes \vec{w}^\dag_{\vec{k}} \mate.   
+\ee
+From the symmetric structure of the spectrum and the presence of two flat bands, we can simply infer the non-zero ones as
+\begin{widetext}
+\be
+\begin{split}
+	\pm \sqrt{\vec{w}^\dag_{\vec{k}} \cdot \vec{w}_{\vec{k}}} & = \pm \sqrt{ \abs{1 + \rme{\rmi\vec{k} \cdot \vec{a}_1} }^2 + \abs{  1 + \rme{\rmi\vec{k} \cdot \vec{a}_2} }^2 + \abs{  1 + \rme{\rmi\vec{k} \cdot( \vec{a}_1 - \vec{a}_2)}}^2 }\\ 
+	& = \pm \sqrt{2} \sqrt{3 + \cosa{ \vec{k} \cdot \vec{a}_1} + \cosa{ \vec{k} \cdot \vec{a}_2} + \cosa{ \vec{k} \cdot (\vec{a}_1 - \vec{a}_2)}}
+\end{split}
+\ee
+\end{widetext}
+
+
+Choosing the reciprocal lattice vectors as 
+\be
+	\vec{a}_1^\ast = \frac{4\pi}{\sqrt{3}} \lt \cos \frac{\pi}{6}, -\sin \frac{\pi}{6} \rt^\intercal \mand \vec{a}_2^\ast = \frac{4\pi}{\sqrt{3}} \lt 0, 1 \rt^\intercal
+\ee
+the first Brillouin zone $\mal{B}$ is an hexagon in $\vec{k}$ space identified by the conditions
+\be
+\begin{split}
+	\lt \abs{\vec{k} \cdot \vec{a}_1^\ast} \leq \ha \abs{\vec{a}_1^\ast}^2 \rt  \,\cap\, \lt \abs{\vec{k} \cdot \vec{a}_2^\ast} \leq \ha \abs{\vec{a}_2^\ast}^2  \rt \,\cap\,  \\
+	\cap  \lt \abs{\vec{k} \cdot (\vec{a}_1^\ast - \vec{a}_2^\ast)} \leq \ha \abs{(\vec{a}_1^\ast - \vec{a}_2^\ast)}^2 \rt.
+	\label{eq:conditions}
+\end{split}
+\ee
+%where the $\vec{k}$s take values as shown in Eq.~\eqref{eq:wavevec}. The bands are displayed in Fig.~\ref{fig:triband}.
+%\begin{figure*}[t!]
+%    \centering
+%    \subfloat{\includegraphics[width=0.45\textwidth]{Triband1.pdf}} 
+%    \subfloat{\includegraphics[width=0.45\textwidth]{Triband2.pdf}}
+%    \caption{Two views of the bands in the first Brillouin zone of the triangular lattice. The middle red one is comprised of two degenerate flat bands. The upper (yellow) and lower (blue) bands are specular and gapped.}
+%\label{fig:triband}
+%\end{figure*}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+\subsection{Example: the honeycomb lattice}
+
+The honeycomb lattice is a triangular Bravais lattice with primitive lattice vectors
+\be
+	\vec{a}_1 = a \lt 1,0   \rt^\intercal \mand \vec{a}_2 = a \lt \cos \frac{\pi}{3}, \sin \frac{\pi}{3}   \rt^\intercal ,
+\ee
+where the lattice spacing $a$ is $\sqrt{3}$ times the edge of the hexagons, plus a basis of two vectors
+\be
+	\vec{b}_1 = 0 \mand \vec{b}_2 = \frac{2\vec{a}_2 - \vec{a}_1}{3}. 
+\ee
+In the synthetic lattice, this gives rise to a structure with a basis of $5$ elements: $2$ one-excitation sites ($n_1 = 2$) and $3$ pair ones ($n_2 = 3$), which we choose as follows:
+\begin{itemize}
+	\item[$\ket{\mu_1}$]: a one-excitation site at $\vec{b} = 0$.
+	\item[$\ket{\mu_2}$]: a one-excitation site at $\vec{b} = \frac{2\vec{a}_2 - \vec{a}_1}{3}$.
+	\item[$\ket{\nu_1}$]: a pair site at $\vec{b} = \frac{2\vec{a}_2 - \vec{a}_1}{6}$.
+	\item[$\ket{\nu_2}$]: a pair site at $\vec{b} = \frac{2\vec{a}_1 - \vec{a}_2}{6}$.
+	\item[$\ket{\nu_3}$]: a pair site at $\vec{b} = -\frac{\vec{a}_1 + \vec{a}_2}{6}$.
+\end{itemize}
+We thus see that the $\wt{C}_{-\vec{k}}$ are $2\times 3$ matrices and that there is at least a flat zero-energy band. The matrix elements can be identified column by column as follows:
+\begin{itemize}
+	\item[$\ket{\nu_1}$]: From $\ket{\nu_1}$ one can jump to $\ket{\mu_1}$ or to $\ket{\mu_2}$ remaining in the same Bravais lattice site.
+	\item[$\ket{\nu_2}$]: From $\ket{\nu_2}$ one can jump to $\ket{\mu_1}$ in the same site or to $\ket{\mu_2}$ changing site by $\vec{j} = \vec{a}_1 - \vec{a}_2$ ($\Rightarrow \rme{i\vec{k}\cdot (\vec{a}_1 - \vec{a}_2) }$).
+	\item[$\ket{\nu_3}$]: From $\ket{\nu_3}$ one can jump to $\ket{\mu_1}$ in the same site or to $\ket{\mu_2}$ changing site by $\vec{j} = - \vec{a}_2$ ($\Rightarrow \rme{- i\vec{k} \cdot \vec{a}_2}$).
+\end{itemize}
+Hence,
+\be
+	\wt{C}_{-\vec{k}} = \matb{ccc} 1 & 1  & 1 \\ 1 & \rme{\rmi\vec{k}\cdot (\vec{a}_1 - \vec{a}_2) } & \rme{- \rmi\vec{k} \cdot \vec{a}_2}      \mate \equiv \matb{c} \vec{w}_{\vec{k},1}^\dag \\ \vec{w}_{\vec{k},2}^\dag  \mate,
+\ee
+with $\vec{w}_{\vec{k},1/2}$ three-dimensional vectors. The matrix $M_{\vec{k}}$ is thus
+\be
+	M_{\vec{k}} = \matb{cc|c} 0 & 0 & \vec{w}_{\vec{k},1}^\dag  \\[1.5mm] 0 & 0 & \vec{w}_{\vec{k},2}^\dag  \\[1.5mm] \hline \vec{w}_{\vec{k},1} & \vec{w}_{\vec{k},2} & 0    \mate . 
+\ee
+The kernel state is a five-dimensional vector $(0,0,\vec{v}_{\vec{k}})$ which satisfies $\vec{w}_{\vec{k},1/2}^\dag \cdot \vec{v}_k = 0$.
+
+To identify the remaining non-zero bands, we again take the square of the total matrix $M_{\vec{k}}$:
+\be
+	M_{\vec{k}}^2 = \matb{cc|c} \vec{w}_{\vec{k},1}^\dag \cdot \vec{w}_{\vec{k},1}  & \vec{w}_{\vec{k},1}^\dag \cdot \vec{w}_{\vec{k},2}  & 0  \\[1mm]
+	\vec{w}_{\vec{k},2}^\dag \cdot \vec{w}_{\vec{k},1} & \vec{w}_{\vec{k},2}^\dag \cdot \vec{w}_{\vec{k},2} & 0   \\[1mm] \hline 
+	0 & 0 & \vec{w}_{\vec{k},1} \otimes \vec{w}_{\vec{k},1}^\dag + \vec{w}_{\vec{k},2} \otimes \vec{w}_{\vec{k},2}^\dag
+\mate ,
+\ee
+where the first block is $2\times 2$ and the second one $3\times 3$. We can now diagonalize the first block to find
+\begin{widetext}
+\be
+	\lambda_{\vec{k},\pm} = \ha \lqq \lt \abs{\vec{w}_{\vec{k},1}}^2 + \abs{\vec{w}_{\vec{k},2}}^2  \rt \pm \sqrt{\lt    \abs{\vec{w}_{\vec{k},1}}^2  -  \abs{\vec{w}_{\vec{k},2}}^2  \rt^2  + 4\abs{\vec{w}_{\vec{k},2}^\dag \cdot \vec{w}_{\vec{k},1}}^2 }   \rqq,
+\ee
+\end{widetext}
+with $\lambda_{\vec{k},\pm} \geq 0$. The four non-trivial bands will thus correspond to $\pm \sqrt{\lambda_{\vec{k},+}}$ and $\pm \sqrt{\lambda_{\vec{k},-}}$. Working out the scalar products
+\be
+	 \abs{\vec{w}_{\vec{k},1}}^2 = \abs{\vec{w}_{\vec{k},2}}^2 = 3 
+\ee
+and
+\be
+	\abs{\vec{w}_{\vec{k},2}^\dag \cdot \vec{w}_{\vec{k},1} } = \abs{1 + \rme{\rmi\vec{k}\cdot (\vec{a}_1 - \vec{a}_2) } + \rme{- \rmi\vec{k} \cdot \vec{a}_2}}
+\ee
+we obtain by substitution
+\begin{widetext}
+\be
+\begin{split}
+	\lambda_{\vec{k},\pm}  =  3\pm \abs{1 + \rme{\rmi\vec{k}\cdot (\vec{a}_1 - \vec{a}_2) } + \rme{- \rmi\vec{k} \cdot \vec{a}_2}}  
+	 = 3 \pm \sqrt{3 + 2\cosa{\vec{k} \cdot (\vec{a}_1 - \vec{a}_2)} + 2\cosa{\vec{k} \cdot \vec{a}_2} + 2\cosa{\vec{k} \cdot \vec{a}_1}}.
+\end{split}
+\ee
+\end{widetext}
+From the first equality we see that the second addend is always $\leq 3$. It is $3$ only when $\vec{k} = 0$ (up to reciprocal lattice translations $\vec{G}$, see \eqref{eq:rec}). Hence, $\lambda_- (\vec{k} = 0) = 0$ is a minimum and $\lambda_{+} (\vec{k}=0) = 6$ is a maximum. The bands $\pm \sqrt{\lambda_{\vec{k},-}}$ touch at $\vec{k} = 0$ with linear dispersion. Second, the argument of the absolute value will vanish when 
+\be
+	\vec{k} \cdot (\vec{a}_1 - \vec{a}_2) = \pm \frac{2\pi}{3} + 2\pi n \,, \ -\vec{k}\cdot \vec{a}_2 = \pm \frac{4\pi}{3} + 2\pi m   
+\ee
+where the signs must be chosen consistently. Up to reciprocal lattice translations, one can choose
+\be
+	\vec{k} = \pm\frac{1}{3} \lt \vec{a}_2^\ast - \vec{a}_1^\ast   \rt,
+\ee
+identifying the points at the vertices of the hexagonal first Brillouin zone (one can verify this point lies at the boundary of two of the conditions in \eqref{eq:conditions}). Therefore, the two upper bands $\sqrt{\lambda_{\vec{k},+}}$ and $\sqrt{\lambda_{\vec{k},-}}$ touch at the vertices of the first Brilluoin zone with linear dispersion and similarly do the lower bands $-\sqrt{\lambda_{\vec{k},+}}$ and $-\sqrt{\lambda_{\vec{k},-}}$. 
+%The bands are depicted in Fig.~\ref{fig:hexband}
+%%%%%%%%%%%%%%%%%%%%%%
+%\begin{figure*}[t!]
+%    \centering
+%    \subfloat{\includegraphics[width=0.31\textwidth]{Hexband1.pdf}} 
+%    \subfloat{\includegraphics[width=0.31\textwidth]{Hexband2.pdf}}
+%    \subfloat{\includegraphics[width=0.31\textwidth]{Hexband3.pdf}}
+%    \caption{Three views of the bands in the first Brillouin zone of the honeycomb lattice, chosen to highlight the linearity of the dispersion relations at the points where the gaps close.}
+%\label{fig:hexband}
+%\end{figure*}
+
+
+
+% For example, the honeycomb lattice has a basis of two sites and is thus reduced to a triangular lattice. 
+%
+%
+%
+%If the original lattice $\mal{L}$ is a Bravais lattice, then this basis will include only a single main state and a certain number of intermediate ones ($d$ for a $d$-dimensional cubic lattice, $3$ for a triangular lattice in two dimensions, $1$ on a chain). Conversely, if the original lattice $\mal{L}$ is not a Bravais lattice and has a non-trivial basis with $b$ sites in it, then the basis of the Hilbert lattice $\mal{L}'$ will include $b$ main states and a certain number of intermediate ones. For instance, if $\mal{L}$ is a honeycomb lattice, it must be reduced to a triangular one by the definition of a two-site basis. Correspondingly, the basis of the Hilbert lattice $\mal{L}'$ contains $2$ main states and $3$ intermediate ones. In general, we call the basis of the Hilbert lattice $\mal{B}$ and introduce its cardinality $\abs{\mal{B}} = N_{main} + N_{int}$, where we distinguish between the number $N_{main}$ of main states in the basis and the number $N_{int}$ of intermediate states in it. Here are some examples:
+%\begin{itemize}
+%	\item Square lattice (Bravais): $N_{main} = 1$, $N_{int} = 2$, $\abs{\mal{B}} = 3$.
+%	\item Triangular lattice (Bravais): $N_{main} = 1$, $N_{int} = 3$, $\abs{\mal{B}} = 4$.
+%	\item Honeycomb lattice (Non-Bravais, reduces to triangular): $N_{main} = 2$, $N_{int} = 3$, $\abs{\mal{B}} = 5$.
+%\end{itemize}
+%Once the basis is identified, the Hilbert lattice is effectively reduced to a ($d$-dimensional) Bravais lattice and one can describe it via a set of primitive lattice vectors $\vec{a}_i$, $i = 1 \ldots d$, which we take to have norm $1$ for simplicity. Each lattice point is therefore an integer combination of these primitive vectors:
+%\be
+%	\vec{l} = \sum_{i=1}^d n_i \vec{a}_i  \ \ \ \text{with} \ \ n_i \in \Z.
+%	\label{eq:realvec}
+%\ee
+%Considering finite lattices with periodic boundary conditions, we set upper bounds $L_i$ to the $n_i$s, such that $n_i = 0,2,\ldots , L_i-1$ or, more generally, these integers are now defined modulo $L_i$, so that $n_i + L_i \equiv n_i$. Note that, in general, this enforces a specific choice on how one is taking the thermodynamic limit.
+%
+%We also introduce the reciprocal lattice vectors $\vec{a}_i^\ast$, $i = 1 \ldots d$ which satisfy the defining relations
+%\be
+%	\vec{a}_i^\ast \cdot \vec{a}_j = 2\pi \delta_{ij}.
+%\ee
+%The reciprocal lattice is then reconstructed by taking integer combinations of these vectors, i.e.,
+%\be
+%	\vec{G} = \sum_{i=1}^d m_i \vec{a}_i^\ast \ \ \ \text{with} \ \ m_i \in \Z_{L_i}.
+%	\label{eq:rec}
+%\ee
+%Defining also the wavevectors
+%\be
+%	\vec{k} = \sum_{i=1}^d \frac{m_i}{L_i} \vec{a}_i^\ast \ \ \ \text{with} \ \ m_i \in \Z_{L_i}
+%	\label{eq:wavevec}
+%\ee
+%one can define the discrete Fourier transform of a quantity $A_{\vec{l}}$ the usual way:
+%\be
+%	\wt{A}_{\vec{k}} = \lt \prod_{i=1}^d L_i  \rt^{-\ha} \sum_{\vec{l}} \rme{-i \vec{k} \cdot \vec{l}} A_{\vec{l}} ,
+%\ee
+%i.e., using Eqs.~\eqref{eq:realvec} and \eqref{eq:wavevec},
+%\be
+%	\wt{A}_{m_1, \ldots m_d} = \lt \prod_{i=1}^d L_i  \rt^{-\ha} \sum_{n_1, \ldots n_d} \rme{-2 \pi i \sum_j \frac{n_j m_j}{L_j}} A_{n_1,\ldots, n_d}.
+%\ee
+%
+%The problem is now reduced to hopping of a single particle on a Bravais lattice of size $\prod_i L_i$, where the basis $\mal{B}$ can be regarded as a set of possible internal states. The total number of states is thus clearly $\abs{\mal{B}} \prod_i L_i$ and we can conveniently write the state of the single hopper as $\ket{\vec{l}} \otimes \ket{\omega}$, where $\ket{\vec{l}}$ denotes its position and $\ket{\omega}$ its internal state (corresponding to what element of the basis it is actually on). As a vector basis for the internal states we take 
+%\be
+%	\ket{\omega} \in Span \set{  \ket{\mu_1}, \ldots \ket{\mu_{N_{main}}}, \ket{\nu_1} , \ldots, \ket{\nu_{N_{int}}} },
+%\ee
+%where the $\ket{\mu_i}$s are the main states in the (lattice) basis, whereas the $\ket{\nu_i}$s are the intermediate ones.
+
+
+
+
+
+\bibliographystyle{apsrev4-1}
+
+\bibliography{bibliography}
+
+\end{document}
